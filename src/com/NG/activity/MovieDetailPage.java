@@ -35,7 +35,7 @@ import com.NG.entity.ShortComment;
 import com.NG.loader.MovieDetailInfoLoader;
 import com.NG.moviesearchbeta.R;
 
-public class detailTest extends Activity {
+public class MovieDetailPage extends Activity {
 	final static String TAG = "detailTest";
 	private Context mContext;
 	private String url;

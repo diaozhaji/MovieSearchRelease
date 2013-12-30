@@ -125,7 +125,7 @@ public class SearhResultAdapter extends BaseAdapter{
 				// TODO Auto-generated method stub
 				System.out.println("点点点点点点点点");
 				Activity activity = (Activity) mContext;
-				Intent intent = new Intent(mContext, com.NG.activity.detailTest.class);
+				Intent intent = new Intent(mContext, com.NG.activity.MovieDetailPage.class);
 				Bundle bundle = new Bundle();
 				bundle.putString("id", movieBriefPojo.getFirstUrl().toString());
 				bundle.putString("imageurl", movieBriefPojo.getImageUrl().toString());

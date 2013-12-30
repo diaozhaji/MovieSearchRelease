@@ -2,7 +2,6 @@
 
 
 import com.NG.moviesearchbeta.R;
-import com.NG.viewpager.ViewPagerActivity;
 
 import android.app.Activity;
 import android.content.Context;

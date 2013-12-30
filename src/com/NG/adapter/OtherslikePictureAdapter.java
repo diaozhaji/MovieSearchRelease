@@ -3,7 +3,7 @@ package com.NG.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.NG.activity.detailTest;
+import com.NG.activity.MovieDetailPage;
 import com.NG.cache.ImageLoader;
 import com.NG.entity.OthersLike;
 import com.NG.entity.Picture;
@@ -86,7 +86,7 @@ public class OtherslikePictureAdapter extends BaseAdapter{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Activity activity = (Activity) mContext;
-				Intent intent = new Intent(mContext, detailTest.class);
+				Intent intent = new Intent(mContext, MovieDetailPage.class);
 				Bundle bundle = new Bundle();
 				bundle.putString("id", ol.getSubject_id());
 				bundle.putString("imageurl", ol.getImage_url());
