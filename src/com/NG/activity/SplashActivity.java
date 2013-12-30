@@ -5,13 +5,17 @@ import com.NG.moviesearchbeta.R;
 import com.NG.viewpager.ViewPagerActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.widget.Toast;
 
 public class SplashActivity extends Activity{
-	private final int SPLASH_DISPLAY_LENGHT = 1000; // Splash display time in ms
+	private final int SPLASH_DISPLAY_LENGHT = 3000; // Splash display time in ms
 	
 	//private ImageView imageview;
 	//private TextView tv;
@@ -34,6 +38,8 @@ public class SplashActivity extends Activity{
         
         setContentView(R.layout.splash);
         
+        checkInternet();
+        
         new Handler().postDelayed(new Runnable() {
 			public void run() {
 				Intent nextIntent = new Intent();
@@ -45,6 +51,8 @@ public class SplashActivity extends Activity{
 			}
 
 		}, SPLASH_DISPLAY_LENGHT);
+        
+        
         
         /*
 		tv = (TextView)findViewById(R.id.splash_text);
@@ -72,6 +80,20 @@ public class SplashActivity extends Activity{
 		*/
 				
 	}
-	
+
+	public void checkInternet() {
+		ConnectivityManager connMgr = (ConnectivityManager) 
+					getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+		
+		if (networkInfo != null && networkInfo.isConnected()) {
+            //new DownloadWebpageTask().execute(stringUrl);
+			
+        } else {
+        	Toast.makeText(getApplicationContext(), "没有可用网络连接",
+        		     Toast.LENGTH_SHORT).show();
+        }
+
+	}
 
 }

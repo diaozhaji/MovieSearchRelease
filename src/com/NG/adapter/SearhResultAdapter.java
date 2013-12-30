@@ -89,12 +89,25 @@ public class SearhResultAdapter extends BaseAdapter{
 		final SingleEntity movieBriefPojo = aList.get(position);
 		
 		viewHolder.mTextView.setText(movieBriefPojo.getMovieName());
+		/*
+		String content = "";
+		if(!movieBriefPojo.getAuthorName().equals(null)){
+			content += "导演：" + movieBriefPojo.getAuthorName()+"\n";
+		}
+		content += "地区："+movieBriefPojo.getCountries()
+				+"\n"+"时间："+movieBriefPojo.getYear()
+				+"\t\t"+"评分："+movieBriefPojo.getRating_average();
+		if(movieBriefPojo.getAdjs()!=""){
+			content += "\n"+"情感："+movieBriefPojo.getAdjs();
+		}
+		viewHolder.contentTextView.setText(content);*/
+		
 		viewHolder.contentTextView.setText(
 				"导演：" + movieBriefPojo.getAuthorName()
 				+"\n"+"地区："+movieBriefPojo.getCountries()
 				+"\n"+"时间："+movieBriefPojo.getYear()+"\t\t"+"评分："+movieBriefPojo.getRating_average()
 				+"\n"+"情感："+movieBriefPojo.getAdjs()
-				);		
+				);	
 		viewHolder.mImageView.setBackgroundResource(R.drawable.rc_item_bg);
 		
 		String url = movieBriefPojo.getImageUrl();

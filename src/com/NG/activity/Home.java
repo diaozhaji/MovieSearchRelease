@@ -12,6 +12,7 @@ import com.NG.entity.SingleEntity;
 import com.NG.loader.SimpleInfoLoder;
 import com.NG.moviesearchbeta.R;
 import com.NG.ui.SearchResultPage;
+import com.NG.utils.StringUtil;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -26,6 +27,8 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -113,9 +116,7 @@ public class Home extends Activity {
 		search_button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 				
-
 				searchData();
 
 				// mHandler.sendEmptyMessage(1);
@@ -123,9 +124,29 @@ public class Home extends Activity {
 		});
 
 		editText = (EditText) mainViewGroup.findViewById(R.id.edittext);
-		// proDialog.show();
+		editText.addTextChangedListener(new TextWatcher(){
+            
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                    int count) {
 
-		// searchData("美国");
+                String editable = editText.getText().toString();
+                String str = StringUtil.stringFilter(editable);
+                if (!editable.equals(str)) {
+                	editText.setText(str);
+                }
+                
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                    int after) {
+
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                
+            }			
+		});
 		
 		mlistView.setOnItemClickListener(new OnItemClickListener(){
 
@@ -166,7 +187,11 @@ public class Home extends Activity {
 					// msg.obj是获取handler发送信息传来的数据
 					List<SingleEntity> seList = (ArrayList<SingleEntity>) msg.obj;
 					// 给ListView绑定数据
-					showall(seList);
+					try{
+						showall(seList);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
 
 				}
 			}
@@ -183,7 +208,6 @@ public class Home extends Activity {
 				aList = new SimpleInfoLoder().findXml(name);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-
 				e.printStackTrace();
 			}
 			handler.sendMessage(handler.obtainMessage(0, aList));
@@ -383,6 +407,7 @@ public class Home extends Activity {
 		
 		
 	}
+	
 	
 	
 	@Override

@@ -2,6 +2,9 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 import java.lang.String.*;
 
 import org.json.JSONArray;
@@ -118,9 +121,20 @@ public class StringUtil {
 		
 	}
 	
+	public static String stringFilter(String str)throws PatternSyntaxException{
+        String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&;*（）——+|{}【】‘；：”“’。，、？]";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(str);
+        return m.replaceAll("");
+
+    }
+	
 	public static String StringToYear(String s){
+		String year="不详";
+		if(s.length()>=4){
+			year = s.substring(0, 4);
+		}
 		
-		String year =s.substring(0, 4);
 		//+"-"+s.substring(4, 6);
 		return year;
 		

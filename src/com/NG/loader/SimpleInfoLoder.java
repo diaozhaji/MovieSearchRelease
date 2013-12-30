@@ -31,8 +31,9 @@ public class SimpleInfoLoder {
 		List<SingleEntity> result = new ArrayList<SingleEntity>();
 		String ch = URLEncoder.encode(key, "utf-8");
 
-		//String uString = "http://api.douban.com/v2/movie/search?q=" + ch;
-		String uString = "http://192.158.31.250/search/search/?command="+ch+"&start=0&count=50";
+		// String uString = "http://api.douban.com/v2/movie/search?q=" + ch;
+		String uString = "http://192.158.31.250/search/search/?command=" + ch
+				+ "&start=0&count=50";
 		URL url = new URL(uString);
 
 		StringBuilder builder = new StringBuilder();
@@ -42,7 +43,7 @@ public class SimpleInfoLoder {
 				.readLine()) {
 			builder.append(s);
 		}
-		
+
 		System.out.println(builder.toString());
 
 		JSONArray jsonArray = null;
@@ -50,45 +51,48 @@ public class SimpleInfoLoder {
 			JSONObject jsonObject = new JSONObject(builder.toString());
 			jsonArray = jsonObject.getJSONArray("subjects");
 		} catch (JSONException e) {
-
 			e.printStackTrace();
 		}
+		if (jsonArray != null) {
+			for (int i = 0; i < jsonArray.length(); i++) {
+				JSONObject jsonObject = (JSONObject) jsonArray.opt(i);
+				try {
+					// JSONObject imagesObj =
+					// jsonObject.getJSONObject("images");
+					SingleEntity movieBriefPojo = new SingleEntity();
+					movieBriefPojo.setMovieName(jsonObject.getString("title"));
+					movieBriefPojo.setAuthorName(jsonObject
+							.getString("raw_directors"));
+					movieBriefPojo.setFirstUrl(jsonObject
+							.getString("subject_id"));
+					movieBriefPojo.setImageUrl(jsonObject
+							.getString("image_small"));
+					String raw_adjs = jsonObject.getString("raw_adjs");
+					raw_adjs = StringUtil.dealAdjString(raw_adjs);
+					movieBriefPojo.setAdjs(raw_adjs);
+					String year = jsonObject.getString("year");
+					year = StringUtil.StringToYear(year);
+					movieBriefPojo.setYear(year);
+					movieBriefPojo.setRating_average(jsonObject
+							.getString("rating_average"));
+					movieBriefPojo.setCountries(jsonObject
+							.getString("countries"));
+					// 暂时没用
+					String user_tags = jsonObject.getString("raw_user_tags");
+					user_tags = StringUtil.dealUserTagsString(user_tags);
+					movieBriefPojo.setUser_tags(user_tags);
 
-		for (int i = 0; i < jsonArray.length(); i++) {
-			JSONObject jsonObject = (JSONObject) jsonArray.opt(i);
-			try {
-				//JSONObject imagesObj = jsonObject.getJSONObject("images");
-				
-				SingleEntity movieBriefPojo = new SingleEntity();
-				movieBriefPojo.setMovieName(jsonObject.getString("title"));
-				movieBriefPojo.setAuthorName(jsonObject.getString("raw_directors"));
-				movieBriefPojo.setFirstUrl(jsonObject.getString("subject_id"));
-				movieBriefPojo.setImageUrl(jsonObject.getString("image_small"));
-				String raw_adjs = jsonObject.getString("raw_adjs");
-				raw_adjs = StringUtil.dealAdjString(raw_adjs);
-				movieBriefPojo.setAdjs(raw_adjs);
-				String year = jsonObject.getString("year");
-				year = StringUtil.StringToYear(year);
-				movieBriefPojo.setYear(year);
-				movieBriefPojo.setRating_average(jsonObject.getString("rating_average"));
-				movieBriefPojo.setCountries(jsonObject.getString("countries"));
-				//暂时没用
-				String user_tags = jsonObject.getString("raw_user_tags");
-				user_tags = StringUtil.dealUserTagsString(user_tags);
-				movieBriefPojo.setUser_tags(user_tags);
-				
-				
-				
-				result.add(movieBriefPojo);
+					result.add(movieBriefPojo);
 
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 		}
 
 		return result;
 	}
-	
+
 }
