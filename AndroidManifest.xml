@@ -21,10 +21,15 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>       
-        </activity>      
+        </activity>
+        <activity 
+            android:name="com.NG.activity.GuideActivity"
+            android:label="欢迎"
+            android:screenOrientation="portrait">
+        </activity>
         <activity 
             android:name="com.NG.activity.Home"
-            android:label="搜索"
+            android:label="万能搜索"
             android:screenOrientation="portrait">
         </activity>  
 

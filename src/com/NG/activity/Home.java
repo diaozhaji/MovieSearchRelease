@@ -54,7 +54,10 @@ public class Home extends Activity {
 	private ViewGroup mainViewGroup;
 	private ViewGroup viewListView = null;
 	private ViewGroup viewSquared = null;
-
+	//底部
+	private ViewGroup indicatorViewGroup;
+	private ImageView bottomImg;
+	
 	// 定义LayoutInflater
 	LayoutInflater mInflater;
 
@@ -159,6 +162,8 @@ public class Home extends Activity {
 			}
 			
 		});
+		
+		
 
 	}
 
@@ -325,6 +330,8 @@ public class Home extends Activity {
 				R.layout.search_result_page, null);
 		viewSquared = (ViewGroup) mInflater.inflate(R.layout.squared_activity,
 				null);
+		
+		
 
 		// 初始化ViewPager的内容
 		mPageViews = new ArrayList<View>();
@@ -336,12 +343,43 @@ public class Home extends Activity {
 				null);
 
 		mViewPager = (ViewPager) mainViewGroup.findViewById(R.id.myviewpager);
-
+		
+		bottomImg = (ImageView) mainViewGroup.findViewById(R.id.bottom_img);
+		bottomImg.setBackgroundResource(R.drawable.bottom_img_left);
+		
 		setContentView(mainViewGroup);
 
 		mViewPager.setAdapter(new MyPagerAdapter());
 		// 设置起始卡片
 		// mViewPager.setCurrentItem(1);
+		
+		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
+
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+				if(arg0 == 1){
+					initSquared();
+				}
+				
+			}
+
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onPageSelected(int arg0) {
+				// TODO Auto-generated method stub
+				if(arg0==0){
+					bottomImg.setBackgroundResource(R.drawable.bottom_img_left);
+				}
+				else{
+					bottomImg.setBackgroundResource(R.drawable.bottom_img_right);
+				}
+			}});
 	}
 
 	private void initSquared() {
@@ -381,28 +419,7 @@ public class Home extends Activity {
 			
 		});
 		
-		mViewPager.setOnPageChangeListener(new OnPageChangeListener() {
-
-			@Override
-			public void onPageScrollStateChanged(int arg0) {
-				// TODO Auto-generated method stub
-				if(arg0 == 1){
-					initSquared();
-				}
-				
-			}
-
-			@Override
-			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void onPageSelected(int arg0) {
-				// TODO Auto-generated method stub
-				
-			}});
+		
 		
 		
 	}
