@@ -7,7 +7,7 @@ import java.util.List;
 import com.NG.activity.Home;
 import com.NG.cache.ImageLoader;
 import com.NG.entity.SingleEntity;
-import com.NG.moviesearchbeta.R;
+import com.NG.moviesearch.R;
 
 import android.app.Activity;
 import android.content.Context;

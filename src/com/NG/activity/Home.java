@@ -10,7 +10,7 @@ import com.NG.adapter.SearhResultAdapter;
 import com.NG.adapter.SquareAdapter;
 import com.NG.entity.SingleEntity;
 import com.NG.loader.SimpleInfoLoder;
-import com.NG.moviesearchbeta.R;
+import com.NG.moviesearch.R;
 import com.NG.utils.StringUtil;
 
 import android.app.Activity;

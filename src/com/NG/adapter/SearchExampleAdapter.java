@@ -1,7 +1,7 @@
 package com.NG.adapter;
 
 import java.util.List;
-import com.NG.moviesearchbeta.R;
+import com.NG.moviesearch.R;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

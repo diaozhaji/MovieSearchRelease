@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.NG.moviesearchbeta;
+package com.NG.moviesearch;
 
 public final class R {
     public static final class array {

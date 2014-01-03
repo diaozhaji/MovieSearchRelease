@@ -5,7 +5,7 @@ import java.util.List;
 import com.NG.adapter.SearhResultAdapter.ViewHolder;
 import com.NG.entity.ShortComment;
 import com.NG.entity.SingleEntity;
-import com.NG.moviesearchbeta.R;
+import com.NG.moviesearch.R;
 
 import android.content.Context;
 import android.util.Log;

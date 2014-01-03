@@ -7,7 +7,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -33,7 +32,7 @@ import com.NG.entity.MovieDetailEntity;
 import com.NG.entity.OthersLike;
 import com.NG.entity.ShortComment;
 import com.NG.loader.MovieDetailInfoLoader;
-import com.NG.moviesearchbeta.R;
+import com.NG.moviesearch.R;
 
 public class MovieDetailPage extends Activity {
 	final static String TAG = "detailTest";
@@ -149,7 +148,6 @@ public class MovieDetailPage extends Activity {
 
 	}
 
-	@SuppressLint("NewApi")
 	private void initTabButton() {
 		bg_tab_selected = getResources()
 				.getDrawable(R.drawable.bg_tab_selected);
@@ -299,35 +297,32 @@ public class MovieDetailPage extends Activity {
 
 	}
 
-	@SuppressLint("NewApi")
 	private void seeTab1() {
 		// TODO Auto-generated method stub
-		button_tab1.setBackground(bg_tab_selected);
-		button_tab2.setBackground(bg_tab_normal);
-		button_tab3.setBackground(bg_tab_normal);
+		button_tab1.setBackgroundResource(R.drawable.bg_tab_selected);
+		button_tab2.setBackgroundResource(R.drawable.bg_tab_normal);
+		button_tab3.setBackgroundResource(R.drawable.bg_tab_normal);
 		tab1.setVisibility(View.VISIBLE);
 		tab2.setVisibility(View.GONE);
 		tab3.setVisibility(View.GONE);
 	}
 
-	@SuppressLint("NewApi")
 	private void seeTab2() {
 		// TODO Auto-generated method stub
-		button_tab1.setBackground(bg_tab_normal);
-		button_tab2.setBackground(bg_tab_selected);
-		button_tab3.setBackground(bg_tab_normal);
+		button_tab1.setBackgroundResource(R.drawable.bg_tab_normal);
+		button_tab2.setBackgroundResource(R.drawable.bg_tab_selected);
+		button_tab3.setBackgroundResource(R.drawable.bg_tab_normal);
 		tab1.setVisibility(View.GONE);
 		tab2.setVisibility(View.VISIBLE);
 		tab3.setVisibility(View.GONE);
 
 	}
 
-	@SuppressLint("NewApi")
 	private void seeTab3() {
 		// TODO Auto-generated method stub
-		button_tab1.setBackground(bg_tab_normal);
-		button_tab2.setBackground(bg_tab_normal);
-		button_tab3.setBackground(bg_tab_selected);
+		button_tab1.setBackgroundResource(R.drawable.bg_tab_normal);
+		button_tab2.setBackgroundResource(R.drawable.bg_tab_normal);
+		button_tab3.setBackgroundResource(R.drawable.bg_tab_selected);
 		tab1.setVisibility(View.GONE);
 		tab2.setVisibility(View.GONE);
 		tab3.setVisibility(View.VISIBLE);

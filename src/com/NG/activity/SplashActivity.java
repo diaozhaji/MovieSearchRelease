@@ -1,6 +1,6 @@
 ﻿package com.NG.activity;
 
-import com.NG.moviesearchbeta.R;
+import com.NG.moviesearch.R;
 
 import android.app.Activity;
 import android.content.Context;

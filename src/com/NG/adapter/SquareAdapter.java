@@ -3,7 +3,7 @@ package com.NG.adapter;
 import java.util.List;
 import java.util.Random;
 
-import com.NG.moviesearchbeta.R;
+import com.NG.moviesearch.R;
 
 import android.content.Context;
 import android.graphics.Color;
